@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class EmployeeManager {
-    ArrayList<Employee> employees ;
+    ArrayList<Employee> employees;
 
     public EmployeeManager() {
         this.employees = new ArrayList<>();
@@ -15,48 +15,47 @@ public class EmployeeManager {
         }
         return null;
     }
-    public ArrayList<Employee> getEmployees() {
-        return employees;
+
+    public void addEmployee(String name, int id, int salary) {
+        if (getById(id) == null) {
+            Employee employee = new Employee(name, id, salary);
+            employees.add(employee);
+            System.out.println("Employee added");
+        } else {
+            System.out.println("Employee already exists");
+        }
     }
 
-    public void addEmployee(Employee employee)
-    {
-        employees.add(employee);
-    }
-    public void removeEmployee(int id)
-    {
+    public void removeEmployee(int id) {
         Employee employee = getById(id);
-        if(employee != null)
-        {
+        if (employee != null) {
             employees.remove(employee);
-        }else{
+            System.out.println("Employee removed");
+        } else {
             System.out.println("Employee not found");
         }
 
 
     }
 
-    public void updateEmployee(int Salary,int id)
-    {
+    public void updateEmployee(int Salary, int id) {
         Employee employee = getById(id);
-        if(employee != null)
-        {
+        if (employee != null) {
             employee.setSalary(Salary);
-        }else {
+            System.out.println("Employee updated");
+        } else {
             System.out.println("Employee not found");
         }
 
     }
 
-    public void viewEmployees()
-    {
-       for (Employee employee : employees) {
-           System.out.println(employee);
-       }
-       if(employees.isEmpty())
-       {
-           System.out.println("No employees found");
-       }
+    public void viewEmployees() {
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+        if (employees.isEmpty()) {
+            System.out.println("No employees found");
+        }
     }
 
 
